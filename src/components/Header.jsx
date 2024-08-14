@@ -1,7 +1,8 @@
-export function Header (currentScore, bestScore){
+import { useContext } from "react";
 
-          /* currentScore={currentScore} bestScore={bestScore} */
-        // const { currentScore, bestScore } = this.props; 
+export function Header (){
+        const currentScore = useContext(currentScore); 
+        const bestScore = useContext(bestScore); 
 
         return(
             <header className="App-header">
@@ -10,10 +11,10 @@ export function Header (currentScore, bestScore){
             <h2>Highest Score is 15!</h2>
             <div className= "d-flex justify-content-around align-items-center">
                 <div><p>Current Score: </p>
-                {/* <p>{currentScore}</p> */}
+                <p>{currentScore}</p>
                 </div>
                 <div><p>Best Score: </p>
-                {/* <p>{bestScore}</p> */}
+                <p>{bestScore}</p>
                 </div>
             </div>
             </header>

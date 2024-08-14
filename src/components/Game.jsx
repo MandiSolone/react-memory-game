@@ -1,6 +1,5 @@
-import { useState } from "react";
-// update setGameStatus and restart game & alert player game is over
-// track score (.length or array)
+import { useState, createContext } from "react";
+
 //display score
 
 function Game () {
@@ -8,9 +7,11 @@ function Game () {
   const [numberList, setNumberList] = useState([]);
   const [gameStatus, setGameStatus] = useState(true); //status of true means game is still active
   const correctAnswer = numberList.includes(num); //not in state store so it renders realtime // true/false boolean, is the num in the array
-  const currentScore = numberList.length; 
-  const [listAllScores, setListAllScores] = useState([0]); 
-  const bestScore = (Math.max(...listAllScores));
+  const [listAllScores, setListAllScores] = useState([0]);
+
+  const currentScore = createContext(numberList.length);  
+  const bestScore = createContext((Math.max(...listAllScores)));
+
   console.log(" A num", num);
   console.log(" B numberList", numberList);
   console.log(" C correctAnswer", correctAnswer);
@@ -34,7 +35,7 @@ function Game () {
     if (correctAnswer != clickedAnswer) {
       setGameStatus(false);
       setListAllScores([...listAllScores, currentScore]); 
-      setNum(0);
+      setNum("");
       setNumberList([]);
       console.log(" J Game Over");
       console.log(" K listAllScores", listAllScores);
@@ -47,12 +48,25 @@ function Game () {
     checkAnswer(e.target.id);
   };
 
+  const restartHandleClick = () => {
+    console.log("L restart");
+    setGameStatus(true); 
+    setNum("0"); 
+  }
+
 
   return (
     <div className="number-div ">
-      {/* create a restart button and update messaging  */}
       <div> 
-        <h2>{gameStatus ? <p>Play on!</p> : <p>Game Over!</p>}</h2>
+        <h2>{gameStatus ? <p>Let's Play!</p> : <p>Game Over!</p>}</h2>
+        <div>
+          {gameStatus ? 
+          <p></p> :
+          <button id="restart-btn" className="btn" onClick={restartHandleClick}>
+          Restart Game 
+        </button> 
+          }
+        </div>
       </div>
       <h3>Number is: {num}</h3>
       <div className="question-div">
@@ -70,3 +84,4 @@ function Game () {
   );
 }
 export default Game;
+export { bestScore, currentScore };
