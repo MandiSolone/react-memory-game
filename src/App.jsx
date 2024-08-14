@@ -1,7 +1,7 @@
 // import { Component } from "react";
 import './App.css'
 import { Header } from './components/Header';
-import { Game } from './components/Game';
+import Game from './components/Game';
 
 //     super(); 
 //     this.state = {
@@ -14,10 +14,10 @@ import { Game } from './components/Game';
 
 function App () {
       return (
-          <div className= "App">
+          <main className= "App-container">
             <Header /> {/* currentScore={currentScore} bestScore={bestScore} */}
             <Game />
-          </div>
+          </main>
       );
     }
 
