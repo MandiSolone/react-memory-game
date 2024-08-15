@@ -1,8 +1,4 @@
-import { useContext } from "react";
-
-export function Header (){
-        const currentScore = useContext(currentScore); 
-        const bestScore = useContext(bestScore); 
+export function Header ({ currentScore, bestScore }){
 
         return(
             <header className="App-header">

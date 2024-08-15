@@ -1,25 +1,28 @@
-import { useState, createContext } from "react";
-
+import { useState } from "react";
 //display score
 
-function Game () {
+export default function Game ({ numberList, currentScore, setListAllScores, setNumberList }) {
   const [num, setNum] = useState(0);
-  const [numberList, setNumberList] = useState([]);
   const [gameStatus, setGameStatus] = useState(true); //status of true means game is still active
-  const correctAnswer = numberList.includes(num); //not in state store so it renders realtime // true/false boolean, is the num in the array
-  const [listAllScores, setListAllScores] = useState([0]);
-
-  const currentScore = createContext(numberList.length);  
-  const bestScore = createContext((Math.max(...listAllScores)));
+  const correctAnswer = numberList?.includes(num); //not in state store so it renders realtime // true/false boolean, is the num in the array
+  
+  // const { numberList } = props;
+  // const { setListAllScores } = props;
+  // const { currentScore } = props; 
+  // const { bestScore } = props;
+  // const [numberList, setNumberList] = useState([]);
+  // const [listAllScores, setListAllScores] = useState([0]);
+  // const currentScore = (numberList.length);  
+  // const bestScore = ((Math.max(...listAllScores)));
 
   console.log(" A num", num);
   console.log(" B numberList", numberList);
   console.log(" C correctAnswer", correctAnswer);
-  console.log(" D numberList.includes(num)", numberList.includes(num));
+  console.log(" D numberList.includes(num)", numberList?.includes(num));
   console.log(" E gameStatus", gameStatus);
   console.log(" F currentScore", currentScore); 
-  console.log(" G listAllScores", listAllScores);
-  console.log(" H bestScore", bestScore); 
+  // console.log(" G listAllScores", listAllScores);
+  // console.log(" H bestScore", bestScore); 
 
   const randomNumberInRange = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,11 +37,11 @@ function Game () {
     //alert Game Over and restart game
     if (correctAnswer != clickedAnswer) {
       setGameStatus(false);
-      setListAllScores([...listAllScores, currentScore]); 
+      setListAllScores(function (listAllScores){return [...listAllScores, currentScore]}); 
       setNum("");
       setNumberList([]);
       console.log(" J Game Over");
-      console.log(" K listAllScores", listAllScores);
+      // console.log(" K listAllScores", listAllScores);
     }
   };
 
@@ -52,13 +55,12 @@ function Game () {
     console.log("L restart");
     setGameStatus(true); 
     setNum("0"); 
-  }
-
+  } 
 
   return (
     <div className="number-div ">
       <div> 
-        <h2>{gameStatus ? <p>Let's Play!</p> : <p>Game Over!</p>}</h2>
+        <h2>{gameStatus ? <p>Let&apos;s Play!</p> : <p>Game Over!</p>}</h2>
         <div>
           {gameStatus ? 
           <p></p> :
@@ -83,5 +85,5 @@ function Game () {
     </div>
   );
 }
-export default Game;
-export { bestScore, currentScore };
+
+
