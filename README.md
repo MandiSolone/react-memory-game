@@ -47,3 +47,7 @@ react-number-memory-game/
 │   └── styles.css      # Styling for the game
 ├── package.json        # Project dependencies and scripts
 └── README.md           # Project documentation
+<<<<<<< HEAD
+=======
+
+>>>>>>> bcea748 (updated README.md)
