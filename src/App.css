@@ -2,10 +2,12 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  padding: 0 20px;
 }
 
 .d-flex {
   display: flex;
+  gap: 15px; 
 }
 
 .justify-content-around {
@@ -18,7 +20,19 @@
 
 .btn {
   margin: 10px;
+  padding: 10px 15px; /* Add padding for a better button size */
+  background-color: rgb(217, 156, 70); 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.btn:hover {
+  background-color:  rgb(78, 54, 21); /* Darken on hover */
+}
+
 .App-container {
   display: flex;
   flex-direction: column;
@@ -27,33 +41,53 @@
 }
 .App-header {
   background-color: rgb(217, 156, 70);
-  width: 100vw;
+  width: 100%;
   min-height: 25vh;
   margin: 0%;
   padding: 20px;
+  border-radius: 8%;
 }
 
-@keyframes logo-spin {
+/* @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
+ /* 
+.read-the-docs {
+  color: #666;
+} */
+
 
 .card {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+@media (max-width: 768px) {
+  .card {
+    padding: 1.2em; /* Reduce padding for mobile */
+  }
 }
 
-
+@media (max-width: 576px) {
+  .App-container {
+    padding: 10px; /* Reduce padding for smaller devices */
+  }
+  
+  .App-header {
+    min-height: 20vh; /* Adjust height for smaller screens */
+  }
+  
+  .card {
+    padding: 1em;
+  }
+}
